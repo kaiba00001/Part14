@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DoctorAp.Models.ItemsLead>
+
+@{
+    ViewData["Title"] = "Index";
+    decimal totalCost = 0; // Initialize the total cost to zero
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Item)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostPerItem)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Item)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CostPerItem)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+
+            totalCost += item.CostPerItem; // Add the CostPerItem value to the total cost
+        }
+    </tbody>
+</table>
+
+<h4>Total Cost Per Item:</h4>
+<p>@totalCost</p>
+
+<form action="https://www.paypal.com/za/home" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL">
+    <input type="hidden" name="item_name" value="Payment for Items">
+    <input type="hidden" name="amount" value="@totalCost">
+    <input type="hidden" name="currency_code" value="USD">
+    <button type="submit" class="btn btn-primary">Pay with PayPal</button>
+</form>

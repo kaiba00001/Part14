@@ -1,0 +1,97 @@
+﻿@model DoctorAp.Models.BookingLeadEntity
+
+@{
+    ViewData["Title"] = "Edit";
+}
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+    body {
+        background-color: #36393F;
+        color: #FFFFFF;
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        font-size: 24px;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .form-group label {
+        color: #FFFFFF;
+        font-weight: bold;
+    }
+
+    .form-control {
+        background-color: #333333;
+        color: #FFFFFF;
+    }
+
+    .text-danger {
+        color: #FF0000;
+    }
+
+    .btn-primary {
+        background-color: #C64242;
+        border-color: #C64242;
+    }
+
+        .btn-primary:hover {
+            background-color: #9E3333;
+            border-color: #9E3333;
+        }
+
+    a {
+        color: #C64242;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+</style>
+<h1>Edit</h1>
+
+<h4>BookingLeadEntity</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile" class="control-label"></label>
+                <input asp-for="Mobile" class="form-control" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Time" class="control-label"></label>
+                <input asp-for="Time" class="form-control" />
+                <span asp-validation-for="Time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

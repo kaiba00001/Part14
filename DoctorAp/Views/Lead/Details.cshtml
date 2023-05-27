@@ -1,0 +1,90 @@
+﻿@model DoctorAp.Models.BookingLeadEntity
+
+@{
+    ViewData["Title"] = "Details";
+}
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+    body {
+        background-color: #36393F;
+        color: #FFFFFF;
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        font-size: 24px;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .form-group label {
+        color: #FFFFFF;
+        font-weight: bold;
+    }
+
+    .form-control {
+        background-color: #333333;
+        color: #FFFFFF;
+    }
+
+    .text-danger {
+        color: #FF0000;
+    }
+
+    .btn-primary {
+        background-color: #C64242;
+        border-color: #C64242;
+    }
+
+        .btn-primary:hover {
+            background-color: #9E3333;
+            border-color: #9E3333;
+        }
+
+    a {
+        color: #C64242;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+</style>
+<h1>Details</h1>
+
+<div>
+    <h4>BookingLeadEntity</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Mobile)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Mobile)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

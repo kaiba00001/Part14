@@ -1,0 +1,113 @@
+﻿@model IEnumerable<DoctorAp.Models.SupplyLead>
+
+@{
+    ViewData["Title"] = "Supplies";
+}
+
+<style>
+    /* CSS styles for the table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    /* CSS styles for the links */
+    .action-link {
+        color: #007bff;
+        margin-right: 5px;
+        text-decoration: none;
+    }
+
+    /* CSS styles for the "Create New" button */
+    .create-button {
+        display: inline-block;
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+    .create-button:hover {
+        background-color: #0056b3;
+    }
+
+    /* CSS styles for the page heading */
+    h1 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    /* CSS styles for the container */
+    .container {
+        margin: 20px;
+    }
+
+    /* CSS styles for the "Back to List" link */
+    .back-link {
+        display: block;
+        margin-top: 20px;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .back-link:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="container">
+    <h1>Supplies</h1>
+
+    <p>
+        <a asp-action="Create" class="create-button">Create New</a>
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Item)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="action-link">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="action-link">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="action-link">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-action="Index" class="back-link">Back to List</a>
+</div>
+
